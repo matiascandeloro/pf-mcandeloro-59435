@@ -1,0 +1,28 @@
+
+<mat-toolbar>
+  <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>PF Candeloro 59435</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+
+
+  <!-- side bar menu lateral-->
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <button  mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+  
+
+
+    <!--area derecha contenido -->
+    <div class="example-sidenav-content">
+      
+      <app-user></app-user>
+    </div>
+  
+  </mat-drawer-container>
