@@ -12,10 +12,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserFullNamePipe } from './pipes/user-full-name.pipe';
-
+import { TitleDirective } from './directives/title.directive';
 @NgModule({
   declarations: [
-    UserFullNamePipe
+    UserFullNamePipe,
+    TitleDirective
   ],
   imports: [
     CommonModule
@@ -32,7 +33,8 @@ import { UserFullNamePipe } from './pipes/user-full-name.pipe';
     MatDatepickerModule,
     MatDialogModule,
     MatTableModule,
-    UserFullNamePipe
+    UserFullNamePipe,
+    TitleDirective,
   ]
 })
 export class SharedModule { }
