@@ -10,3 +10,11 @@ export interface Course {
     description: string;
     active:boolean;
 }
+
+export interface User{
+    id:string;
+    firstName: string;
+    lastName: string;
+    email:string;
+    createdAt: Date;
+}
