@@ -3,8 +3,7 @@ import {
   MatInput,
   MatInputModule,
   getMatInputUnsupportedTypeError
-} from "./chunk-K4AROIKS.js";
-import "./chunk-ZHSIS5VL.js";
+} from "./chunk-HR6RLPNL.js";
 import {
   MatError,
   MatFormField,
@@ -13,6 +12,7 @@ import {
   MatPrefix,
   MatSuffix
 } from "./chunk-7TJWQF2B.js";
+import "./chunk-ZHSIS5VL.js";
 import "./chunk-LJ6R2XE2.js";
 import "./chunk-6UJVANMP.js";
 import "./chunk-UD4P63XA.js";

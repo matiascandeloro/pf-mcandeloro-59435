@@ -11,9 +11,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UserFullNamePipe
+  ],
   imports: [
     CommonModule
   ],
@@ -28,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    UserFullNamePipe
   ]
 })
 export class SharedModule { }

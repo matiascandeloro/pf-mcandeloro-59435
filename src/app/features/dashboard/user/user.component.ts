@@ -1,26 +1,19 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { Student } from '../../../model/interfaces';
+import { Student, User } from '../../../model/interfaces';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: Student[] = [
-  {name: 'Matias',    lastname: 'Candeloro',  email:'mcandeloro@gmail.com' },
-  {name: 'Agustin',   lastname: 'Lopez',  email:'alopez@gmail.com' },
-  {name: 'Nahuel',    lastname: 'Ortiz',  email:'nortiz@gmail.com' },
-  {name: 'Sergio',    lastname: 'Juarez',  email:'sjuarez@gmail.com' },
-  {name: 'Leonardo',  lastname: 'Hernandez',  email:'lhernandez@gmail.com' },
-  {name: 'Gustavo',   lastname: 'Fernandez',  email:'gfernandez@gmail.com' },
-  {name: 'Francisco', lastname: 'Gutierrez',  email:'fgutierrez@gmail.com' },
-  {name: 'Tomas',     lastname: 'Arevalo',  email:'tarevalo@gmail.com' },
-  {name: 'Ignacio',   lastname: 'Conti',  email:'iconti@gmail.com' },
-  {name: 'David',     lastname: 'Gomez',  email:'dgomez@gmail.com' },
+const ELEMENT_DATA: User[] = [
+  {firstName: 'Matias',    lastName: 'Candeloro',  email:'mcandeloro@gmail.com' },
+  {firstName: 'Agustin',   lastName: 'Lopez',  email:'alopez@gmail.com' },
+  {firstName: 'Nahuel',    lastName: 'Ortiz',  email:'nortiz@gmail.com' },
+  {firstName: 'Sergio',    lastName: 'Juarez',  email:'sjuarez@gmail.com' },
+  {firstName: 'Leonardo',  lastName: 'Hernandez',  email:'lhernandez@gmail.com' },
+  {firstName: 'Gustavo',   lastName: 'Fernandez',  email:'gfernandez@gmail.com' },
+  {firstName: 'Francisco', lastName: 'Gutierrez',  email:'fgutierrez@gmail.com' },
+  {firstName: 'Tomas',     lastName: 'Arevalo',  email:'tarevalo@gmail.com' },
+  {firstName: 'Ignacio',   lastName: 'Conti',  email:'iconti@gmail.com' },
+  {firstName: 'David',     lastName: 'Gomez',  email:'dgomez@gmail.com' },
 ];
 
 
@@ -31,7 +24,7 @@ const ELEMENT_DATA: Student[] = [
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
-  displayedColumns: string[] = ['position', 'name', 'lastname', 'email','actions'];
+  displayedColumns: string[] = ['position', 'name', 'email','actions'];
   dataSource = ELEMENT_DATA;
   constructor(private matDialog:MatDialog){
 
@@ -44,7 +37,7 @@ export class UserComponent {
         next:(result)=>{
           console.log('Recibimos ',result);
           if (!!result){
-            this.dataSource= [...this.dataSource,{name: 'David',     lastname: 'Gomez',  email:'dgomez@gmail.com' },]
+            this.dataSource= [...this.dataSource,{firstName: 'David',     lastName: 'Gomez',  email:'dgomez@gmail.com' },]
           }
         }
       });
