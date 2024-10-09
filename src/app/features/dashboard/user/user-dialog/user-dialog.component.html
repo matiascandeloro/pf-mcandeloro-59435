@@ -4,13 +4,21 @@
     <form [formGroup]="userForm">
       <div class="row">
         <div class="col-6">
-            <mat-form-field class="example-form-field w-100">
+            <mat-form-field class="example-form-field w-100 h-100">
               <mat-label >Nombre</mat-label>
               <input formControlName="firstName" matInput >
               <mat-error>
-                @if (userForm.get('firstName')?.hasError('required'))
-                {
+                @if (userForm.get('firstName')?.hasError('required')){
                   El nombre es requerido
+                }
+                @if (userForm.get('firstName')?.hasError('minlength')){
+                  Debe tener mas de 3 caracteres
+                }
+                @if (userForm.get('firstName')?.hasError('maxlength')){
+                  Debe tener menos de 20 caracteres
+                }
+                @if (userForm.get('firstName')?.hasError('pattern')){
+                  No puede contener numeros 
                 }
               </mat-error>
             </mat-form-field>
@@ -24,6 +32,15 @@
               {
                 El apellido es requerido
               }
+              @if (userForm.get('lastName')?.hasError('minlength')){
+                Debe tener mas de 3 caracteres
+              }
+              @if (userForm.get('lastName')?.hasError('maxlength')){
+                Debe tener menos de 20 caracteres
+              }
+              @if (userForm.get('lastName')?.hasError('pattern')){
+                No puede contener numeros 
+              }
             </mat-error>
           </mat-form-field>
         </div>
@@ -36,6 +53,9 @@
               @if (userForm.get('email')?.hasError('required'))
               {
                 El correo electronico es requerido
+              }
+              @if (userForm.get('email')?.hasError('pattern')){
+                Debe tener forma direccion&#64;mail.com
               }
             </mat-error>
           </mat-form-field>

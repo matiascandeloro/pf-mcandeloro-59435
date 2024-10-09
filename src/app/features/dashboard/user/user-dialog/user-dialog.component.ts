@@ -25,9 +25,9 @@ export class UserDialogComponent {
   ){
     console.log(data);
     this.userForm=this.formBuilder.group({
-      firstName:[null,[Validators.required]],
-      lastName:[null,[Validators.required]],
-      email:[null,[Validators.required]],
+      firstName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z]+$/)]],
+      lastName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z]+$/)]],
+      email:[null,[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
     });
     this.patchFormValue();
   }
