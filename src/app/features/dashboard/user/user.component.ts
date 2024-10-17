@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { Student, User } from '../../../model/interfaces';
 import { UsersService } from '../../../core/services/users.service';
+import { AlertService } from '../../../core/services/alert.service';
 
 
 
@@ -17,7 +18,8 @@ export class UserComponent implements OnInit {
   isLoading=false;
   constructor(
     private matDialog:MatDialog,
-    private usersService:UsersService
+    private usersService:UsersService,
+    public alertService:AlertService,
   ){
 
   }
