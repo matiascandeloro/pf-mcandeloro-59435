@@ -4,13 +4,13 @@ import {
   style,
   transition,
   trigger
-} from "./chunk-LJ6R2XE2.js";
+} from "./chunk-GNBR733N.js";
 import {
   CdkScrollable,
   CdkScrollableModule,
   ScrollDispatcher,
   ViewportRuler
-} from "./chunk-VPJFIUA2.js";
+} from "./chunk-3RNP7FYN.js";
 import {
   Directionality,
   ESCAPE,
@@ -22,10 +22,10 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
   hasModifierKey
-} from "./chunk-6UJVANMP.js";
+} from "./chunk-XQKSAS4H.js";
 import {
   DOCUMENT
-} from "./chunk-UD4P63XA.js";
+} from "./chunk-ZKJLMIWG.js";
 import {
   ANIMATION_MODULE_TYPE,
   AfterRenderPhase,
@@ -45,23 +45,12 @@ import {
   Optional,
   Output,
   QueryList,
-  Subject,
   ViewChild,
   ViewEncapsulation$1,
   afterNextRender,
-  debounceTime,
-  distinctUntilChanged,
-  filter,
   forwardRef,
-  fromEvent,
   inject,
-  map,
-  mapTo,
-  merge,
   setClassMetadata,
-  startWith,
-  take,
-  takeUntil,
   ɵɵInheritDefinitionFeature,
   ɵɵProvidersFeature,
   ɵɵStandaloneFeature,
@@ -91,7 +80,20 @@ import {
   ɵɵsyntheticHostProperty,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-WN4GP7Z3.js";
+} from "./chunk-KJZSCXEF.js";
+import {
+  Subject,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  fromEvent,
+  map,
+  mapTo,
+  merge,
+  startWith,
+  take,
+  takeUntil
+} from "./chunk-2CVCC5YH.js";
 
 // node_modules/@angular/material/fesm2022/sidenav.mjs
 var _c0 = ["*"];

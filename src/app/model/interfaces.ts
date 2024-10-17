@@ -6,9 +6,11 @@ export interface Student {
 
 
 export interface Course {
+    id:string;
     name: string;
     description: string;
     active:boolean;
+    createdAt: Date;
 }
 
 export interface User{

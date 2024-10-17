@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserFullNamePipe } from './pipes/user-full-name.pipe';
 import { TitleDirective } from './directives/title.directive';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     UserFullNamePipe,
@@ -35,6 +37,7 @@ import { TitleDirective } from './directives/title.directive';
     MatTableModule,
     UserFullNamePipe,
     TitleDirective,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

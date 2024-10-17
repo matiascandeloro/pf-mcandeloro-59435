@@ -1,36 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { Student, User } from '../../../model/interfaces';
+import { UsersService } from '../../../core/services/users.service';
 
-const ELEMENT_DATA: User[] = [
-  {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date()},
-  {id: 'Xm7s', firstName: 'Agustin',   lastName: 'Lopez',     email:'alopez@gmail.com',     createdAt: new Date()},
-  {id: 'ksRj', firstName: 'Nahuel',    lastName: 'Ortiz',     email:'nortiz@gmail.com',     createdAt: new Date()},
-  {id: 'w7cB', firstName: 'Sergio',    lastName: 'Juarez',    email:'sjuarez@gmail.com',    createdAt: new Date()},
-  {id: 'vjPT', firstName: 'Leonardo',  lastName: 'Hernandez', email:'lhernandez@gmail.com', createdAt: new Date()},
-  {id: 'EToz', firstName: 'Gustavo',   lastName: 'Fernandez', email:'gfernandez@gmail.com', createdAt: new Date()},
-  {id: 'vSKX', firstName: 'Francisco', lastName: 'Gutierrez', email:'fgutierrez@gmail.com', createdAt: new Date()},
-  {id: 'Fd8b', firstName: 'Tomas',     lastName: 'Arevalo',   email:'tarevalo@gmail.com',   createdAt: new Date()},
-  {id: '7BQT', firstName: 'Ignacio',   lastName: 'Conti',     email:'iconti@gmail.com',     createdAt: new Date()},
-  {id: 'CGLm', firstName: 'David',     lastName: 'Gomez',     email:'dgomez@gmail.com',     createdAt: new Date()},
-];
+
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email','createdAt','actions'];
-  dataSource = ELEMENT_DATA;
-  constructor(private matDialog:MatDialog){
+  dataSource: User[]=[];
+  isLoading=false;
+  constructor(
+    private matDialog:MatDialog,
+    private usersService:UsersService
+  ){
 
+  }
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers():void{
+    this.isLoading=true;
+     this.usersService.getUsers().subscribe({
+      next:(users)=>{
+        this.dataSource=users;
+        this.isLoading=false;
+      },
+      error:()=>{
+        this.isLoading=false;
+      },
+      complete:()=>{
+        this.isLoading=false;
+      },
+     });
   }
 
   onDelete(id: string){
     if (confirm('Esta seguro de eliminar el registro?')){
-       this.dataSource=this.dataSource.filter((user)=>user.id!==id);
+      this.isLoading=true;
+       this.usersService.removeUserById(id).subscribe({
+        next: (users)=>{
+          this.dataSource=users;
+          this.isLoading=false;
+        },
+        error:()=>{
+          this.isLoading=false;
+        },
+        complete:()=>{
+          this.isLoading=false;
+        }
+      });
     }
   }
 
@@ -46,15 +71,46 @@ export class UserComponent {
           console.log('Recibimos ',result);
           if (!!result){
             if (editingUser){
-              this.dataSource= this.dataSource.map((user)=>user.id==editingUser.id? {...user,...result}:user);
+              this.handleUpdate(editingUser.id,result);
             }else{
-              this.dataSource= [
-              ...this.dataSource,{...result,}
-              ];
+              this.handleInsert(result);
             }
 
           }
         }
       });
   }
+
+  handleUpdate(id: string, update:User):void{
+    this.isLoading=true;
+    this.usersService.updateUserById(id,update).subscribe({
+      next:(users)=>{
+        this.dataSource=users;
+        this.isLoading=false;
+      },
+      error:()=>{
+        this.isLoading=false;
+      },
+      complete:()=>{
+        this.isLoading=false;
+      }
+    });
+  }
+
+  handleInsert(insert:User):void{
+    this.isLoading=true;
+    this.usersService.insertUser(insert).subscribe({
+      next:(users)=>{
+        this.dataSource=users;
+        this.isLoading=false;
+      },
+      error:()=>{
+        this.isLoading=false;
+      },
+      complete:()=>{
+        this.isLoading=false;
+      }
+    })
+  }
+
 }
