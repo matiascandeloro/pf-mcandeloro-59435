@@ -12,13 +12,11 @@
   <!-- side bar menu lateral-->
     <mat-drawer #drawer class="example-sidenav" mode="side">
 
-      <button  mat-button>
-        Estudiantes
-      </button>
-
-      <button  mat-button>
-        Cursos
-      </button>
+      <mat-nav-list>
+        <a routerLink=""  mat-list-item>Estudiantes</a>
+        <a routerLink=""  mat-list-item>Cursos</a>
+        <a routerLink="/auth/login"  mat-list-item>Cerrar Session</a>
+      </mat-nav-list>
 
     </mat-drawer>
     <!--area derecha contenido -->

@@ -3,14 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
 import { UserModule } from "./user/user.module";
-
-
+import { share } from 'rxjs';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -20,11 +15,8 @@ import { UserModule } from "./user/user.module";
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    UserModule
+    UserModule,
+    SharedModule
 ],
   exports:[
     DashboardComponent

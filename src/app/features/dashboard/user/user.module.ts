@@ -16,7 +16,6 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
     CommonModule,
     UserRoutingModule,
     SharedModule
-
   ],
   exports:[
     UserComponent
