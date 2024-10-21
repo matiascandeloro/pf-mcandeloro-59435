@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { DashboardModule } from './features/dashboard/dashboard.module';
-import { AuthModule } from './features/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +13,6 @@ import { AuthModule } from './features/auth/auth.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule,
-    AuthModule
   ],
   providers: [
     provideAnimationsAsync(),

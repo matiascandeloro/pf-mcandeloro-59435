@@ -43,8 +43,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef appTitle> Acciones </th>
       <td mat-cell *matCellDef="let user"> 
-      <button (click)="openModal(user)" mat-icon-button><mat-icon>edit</mat-icon>  </button>
-      <button (click)="onDelete(user.id)" mat-icon-button><mat-icon>delete</mat-icon>  </button>
+        <button (click)="goToDetail(user.id)" mat-icon-button><mat-icon>visibility</mat-icon>  </button>
+        <button (click)="openModal(user)" mat-icon-button><mat-icon>edit</mat-icon>  </button>
+        <button (click)="onDelete(user.id)" mat-icon-button><mat-icon>delete</mat-icon>  </button>
       </td>
     </ng-container>
   

@@ -4,6 +4,7 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
 import { Student, User } from '../../../model/interfaces';
 import { UsersService } from '../../../core/services/users.service';
 import { AlertService } from '../../../core/services/alert.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -20,6 +21,8 @@ export class UserComponent implements OnInit {
     private matDialog:MatDialog,
     private usersService:UsersService,
     public alertService:AlertService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
   ){
 
   }
@@ -114,5 +117,9 @@ export class UserComponent implements OnInit {
       }
     })
   }
+ 
 
+  goToDetail(id:string):void{
+    this.router.navigate([id,'detail'],{relativeTo: this.activatedRoute})
+  }
 }

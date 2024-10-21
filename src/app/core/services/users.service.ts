@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Pipe } from '@angular/core';
 import { User } from '../../model/interfaces';
-import { delay, Observable, of } from 'rxjs';
+import { delay, map, Observable, of } from 'rxjs';
 
 let MY_USER_DB: User[] = [
   {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date()},
@@ -40,5 +40,10 @@ export class UsersService {
   insertUser(user:User){
     MY_USER_DB= [...MY_USER_DB,{...user,}];
     return of(MY_USER_DB).pipe(delay(500));
+  }
+
+  getUserById(id:string): Observable<User| undefined>{
+    return this.getUsers().pipe(map((users)=> users.find((u)=> u.id===id)));
+
   }
 }

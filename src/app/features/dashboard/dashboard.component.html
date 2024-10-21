@@ -13,16 +13,17 @@
     <mat-drawer #drawer class="example-sidenav" mode="side">
 
       <mat-nav-list>
-        <a routerLink=""  mat-list-item>Estudiantes</a>
+        <a routerLink="home" routerLinkActive #homeLink="routerLinkActive" [activated]="homeLink.isActive" mat-list-item>Inicio</a>
+        <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>Estudiantes</a>
         <a routerLink=""  mat-list-item>Cursos</a>
-        <a routerLink="/auth/login"  mat-list-item>Cerrar Session</a>
+        <a (click)="logout()"  mat-list-item>Cerrar Session</a>
       </mat-nav-list>
 
     </mat-drawer>
     <!--area derecha contenido -->
     <div class="example-sidenav-content">
       
-      <app-user></app-user>
+      <router-outlet></router-outlet>
     </div>
   
   </mat-drawer-container>
