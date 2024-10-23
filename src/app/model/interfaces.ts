@@ -1,7 +1,9 @@
 export interface IStudent {
-    name: string;
-    lastname: string;
+    id:string;
+    firstName: string;
+    lastName: string;
     email: string;
+    createdAt: Date;
 }
 
 
@@ -11,6 +13,12 @@ export interface ICourse {
     description: string;
     active:boolean;
     createdAt: Date;
+}
+
+export interface IInscription{
+    id: string;
+    course:ICourse;
+    student:IStudent;
 }
 
 export interface IClass{
@@ -26,6 +34,7 @@ export interface User{
     firstName: string;
     lastName: string;
     email:string;
+    password:string;
     rol: 'ADMIN'| 'USER';
     createdAt: Date;
 }
