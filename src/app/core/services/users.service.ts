@@ -6,13 +6,9 @@ let MY_USER_DB: User[] = [
   {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', password:'123456',createdAt: new Date(),rol:'ADMIN'},
   {id: 'Xm7s', firstName: 'Agustin',   lastName: 'Lopez',     email:'alopez@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER'},
   {id: 'ksRj', firstName: 'Nahuel',    lastName: 'Ortiz',     email:'nortiz@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER'},
-  {id: 'w7cB', firstName: 'Sergio',    lastName: 'Juarez',    email:'sjuarez@gmail.com',    password:'123456',createdAt: new Date(),rol:'USER'},
-  {id: 'vjPT', firstName: 'Leonardo',  lastName: 'Hernandez', email:'lhernandez@gmail.com', password:'123456',createdAt: new Date(),rol:'USER'},
   {id: 'EToz', firstName: 'Gustavo',   lastName: 'Fernandez', email:'gfernandez@gmail.com', password:'123456',createdAt: new Date(),rol:'ADMIN'},
   {id: 'vSKX', firstName: 'Francisco', lastName: 'Gutierrez', email:'fgutierrez@gmail.com', password:'123456',createdAt: new Date(),rol:'USER'},
   {id: 'Fd8b', firstName: 'Tomas',     lastName: 'Arevalo',   email:'tarevalo@gmail.com',   password:'123456',createdAt: new Date(),rol:'USER'},
-  {id: '7BQT', firstName: 'Ignacio',   lastName: 'Conti',     email:'iconti@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER'},
-  {id: 'CGLm', firstName: 'David',     lastName: 'Gomez',     email:'dgomez@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER'},
 ];
 
 @Injectable({

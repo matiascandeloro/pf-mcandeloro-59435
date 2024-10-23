@@ -1,1 +1,50 @@
-<p>inscription works!</p>
+<h1 appTitle>{{'Inscripcion'}}</h1>
+<button mat-button (click)="openModal()">
+  <mat-icon>add</mat-icon>
+  Crear Inscripcion
+</button>
+<p>aca hay un error que no logro identificar, con uno ya existente en el mock no me levanta los combos al modificar, con uno nuevo si</p>
+@if (isLoading){
+<mat-spinner></mat-spinner>
+}@else{
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef appTitle> id </th>
+      <td mat-cell *matCellDef="let inscription"> {{inscription.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef appTitle> Nombre del curso </th>
+      <td mat-cell *matCellDef="let inscription"> {{inscription.course.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="student" >
+      <th mat-header-cell *matHeaderCellDef appTitle> Alumno anotado </th>
+      <td mat-cell *matCellDef="let inscription"> {{inscription.student | userFullName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="user" >
+        <th mat-header-cell *matHeaderCellDef appTitle> Inscripto por </th>
+        <td mat-cell *matCellDef="let inscription"> {{inscription.user | userFullName}} </td>
+      </ng-container>
+    
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef appTitle> Creacion </th>
+      <td mat-cell *matCellDef="let inscription"> {{inscription.createdAt | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef appTitle> Acciones </th>
+      <td mat-cell *matCellDef="let inscription"> 
+        <button (click)="goToDetail(inscription.id)" mat-icon-button><mat-icon>visibility</mat-icon>  </button>
+        <button (click)="openModal(inscription)" mat-icon-button><mat-icon>edit</mat-icon>  </button>
+        <button (click)="onDelete(inscription.id)" mat-icon-button><mat-icon>delete</mat-icon>  </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+}

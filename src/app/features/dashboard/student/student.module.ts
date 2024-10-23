@@ -5,6 +5,7 @@ import { StudentRoutingModule } from './student-routing.module';
 import { StudentComponent } from './student.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentDialogComponent } from './student-dialog/student-dialog.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { StudentDialogComponent } from './student-dialog/student-dialog.componen
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    SharedModule
   ]
 })
 export class StudentModule { }

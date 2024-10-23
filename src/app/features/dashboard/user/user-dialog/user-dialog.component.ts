@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA,  MatDialogRef } from '@angular/material/dialog';
 import { generateRandomString } from '../../../../shared/utils';
 import { User } from '../../../../model/interfaces';
 
@@ -25,8 +25,8 @@ export class UserDialogComponent {
   ){
     console.log(data);
     this.userForm=this.formBuilder.group({
-      firstName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z]+$/)]],
-      lastName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z]+$/)]],
+      firstName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z ]+$/)]],
+      lastName:[null,[Validators.required,Validators.maxLength(20),Validators.minLength(3),Validators.pattern(/^[A-Za-z ]+$/)]],
       email:[null,[Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
     });
     this.patchFormValue();

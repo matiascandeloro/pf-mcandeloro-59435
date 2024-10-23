@@ -5,6 +5,7 @@ import { InscriptionRoutingModule } from './inscription-routing.module';
 import { InscriptionComponent } from './inscription.component';
 import { InscriptionDetailComponent } from './inscription-detail/inscription-detail.component';
 import { InscriptionDialogComponent } from './inscription-dialog/inscription-dialog.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { InscriptionDialogComponent } from './inscription-dialog/inscription-dia
   ],
   imports: [
     CommonModule,
-    InscriptionRoutingModule
+    InscriptionRoutingModule,
+    SharedModule
   ]
 })
 export class InscriptionModule { }

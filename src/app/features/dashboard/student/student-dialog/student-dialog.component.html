@@ -1,1 +1,71 @@
-<p>student-dialog works!</p>
+<h2 mat-dialog-title>{{data?.editingStudent?"Editando":"Creando"}} Alumno</h2>
+
+<div mat-dialog-content>
+    <form [formGroup]="userForm">
+      <div class="row">
+        <div class="col-6">
+            <mat-form-field class="example-form-field w-100 h-100">
+              <mat-label >Nombre</mat-label>
+              <input formControlName="firstName" matInput >
+              <mat-error>
+                @if (userForm.get('firstName')?.hasError('required')){
+                  El nombre es requerido
+                }
+                @if (userForm.get('firstName')?.hasError('minlength')){
+                  Debe tener mas de 3 caracteres
+                }
+                @if (userForm.get('firstName')?.hasError('maxlength')){
+                  Debe tener menos de 20 caracteres
+                }
+                @if (userForm.get('firstName')?.hasError('pattern')){
+                  No puede contener numeros 
+                }
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-form-field w-100">
+            <mat-label>Apellido</mat-label>
+            <input formControlName="lastName" matInput >
+            <mat-error>
+              @if (userForm.get('lastName')?.hasError('required'))
+              {
+                El apellido es requerido
+              }
+              @if (userForm.get('lastName')?.hasError('minlength')){
+                Debe tener mas de 3 caracteres
+              }
+              @if (userForm.get('lastName')?.hasError('maxlength')){
+                Debe tener menos de 20 caracteres
+              }
+              @if (userForm.get('lastName')?.hasError('pattern')){
+                No puede contener numeros 
+              }
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="col-12" >
+          <mat-form-field class="example-form-field w-100">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput type="email" >
+            <mat-error>
+              @if (userForm.get('email')?.hasError('required'))
+              {
+                El correo electronico es requerido
+              }
+              @if (userForm.get('email')?.hasError('pattern')){
+                Debe tener forma direccion&#64;mail.com
+              }
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+      </div>
+      </form>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-dialog-close mat-button >Cancelar</button>
+    <button (click)="onSave()" mat-button >Guardar</button>
+</div>

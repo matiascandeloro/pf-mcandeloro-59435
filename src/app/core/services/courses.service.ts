@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ICourse, User } from '../../model/interfaces';
-import { delay, Observable, of } from 'rxjs';
+import { ICourse } from '../../model/interfaces';
+import {  map, Observable, of } from 'rxjs';
 
 let MY_COURSE_DB: ICourse[] = [
   {id: 'VaCf', name: 'Curso 1',   description: 'Descripcion del curso 1', active:true, createdAt: new Date()},
@@ -16,8 +16,8 @@ export class CoursesService {
 
   constructor() { }
 
-  getCourses(): ICourse[]{
-    return MY_COURSE_DB;
+  getCourses(): Observable<ICourse[]>{
+    return of(MY_COURSE_DB);
   }
 
 
@@ -35,5 +35,10 @@ export class CoursesService {
   insertCourse(course:ICourse){
     MY_COURSE_DB= [...MY_COURSE_DB,{...course,}];
     return of(MY_COURSE_DB);
+  }
+
+  getCourseById(id:string): Observable<ICourse| undefined>{
+    return this.getCourses().pipe(map((course)=> course.find((c)=> c.id===id)));
+
   }
 }

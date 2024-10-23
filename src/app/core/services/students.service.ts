@@ -27,24 +27,24 @@ export class StudentsService {
 
   constructor() { }
   getStudents():Observable<IStudent[]>{
-    return of(MY_STUDENT_DB).pipe(delay(1000));
+    return of(MY_STUDENT_DB);
   }
 
 
   updateStudentById(id:string,update:Partial<IStudent>){
     MY_STUDENT_DB=MY_STUDENT_DB.map((student)=>student.id===id? {...student,...update}:student);
-    return of(MY_STUDENT_DB).pipe(delay(500));
+    return of(MY_STUDENT_DB);
   }
 
   removeStudentById(id: string ):Observable<IStudent[]>{
     MY_STUDENT_DB=MY_STUDENT_DB.filter((student)=> student.id!=id);
 
-    return of(MY_STUDENT_DB).pipe(delay(500));
+    return of(MY_STUDENT_DB);
   }
 
   insertStudent(student:IStudent){
     MY_STUDENT_DB= [...MY_STUDENT_DB,{...student,}];
-    return of(MY_STUDENT_DB).pipe(delay(500));
+    return of(MY_STUDENT_DB);
   }
 
   getStudentById(id:string): Observable<IStudent| undefined>{

@@ -19,6 +19,8 @@ export interface IInscription{
     id: string;
     course:ICourse;
     student:IStudent;
+    user:User;
+    createdAt: Date;
 }
 
 export interface IClass{
