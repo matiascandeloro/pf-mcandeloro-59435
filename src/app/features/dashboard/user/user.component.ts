@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { Student, User } from '../../../model/interfaces';
+import { IStudent, User } from '../../../model/interfaces';
 import { UsersService } from '../../../core/services/users.service';
 import { AlertService } from '../../../core/services/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './user.component.scss'
 })
 export class UserComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email','createdAt','actions'];
+  displayedColumns: string[] = ['id', 'name', 'email','rol','createdAt','actions'];
   dataSource: User[]=[];
   isLoading=false;
   constructor(

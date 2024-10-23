@@ -14,8 +14,10 @@
 
       <mat-nav-list>
         <a routerLink="home" routerLinkActive #homeLink="routerLinkActive" [activated]="homeLink.isActive" mat-list-item>Inicio</a>
-        <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>Estudiantes</a>
-        <a routerLink=""  mat-list-item>Cursos</a>
+        <a routerLink="" routerLinkActive #studentLink="routerLinkActive" [activated]="studentLink.isActive" mat-list-item>Alumnos</a>
+        <a routerLink="" routerLinkActive #courseLink="routerLinkActive" [activated]="courseLink.isActive" mat-list-item mat-list-item>Cursos</a>
+        <a routerLink="" routerLinkActive #inscriptionLink="routerLinkActive" [activated]="inscriptionLink.isActive" mat-list-item >Inscripciones</a>
+        <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>Usuarios</a>
         <a (click)="logout()"  mat-list-item>Cerrar Session</a>
       </mat-nav-list>
 
