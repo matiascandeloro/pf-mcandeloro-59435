@@ -36,7 +36,7 @@ export class StudentDetailComponent implements OnInit{
   ngOnInit(): void {
     this.loadStudent();
     this.loadCoursesList();
-    this.loadStudentInscriptions(this.student?.id);
+    this.loadStudentInscriptions();
   }
 
   loadStudent():void{
@@ -71,7 +71,7 @@ export class StudentDetailComponent implements OnInit{
     })
   }
 
-  loadStudentInscriptions(idStudent:string | undefined){
+  loadStudentInscriptions(){
     this.isLoadingInscriptions=true;
     this.inscriptionsService.getInscriptionByStudent(this.student?.id).subscribe({
       next:(inscriptions)=>{
@@ -89,20 +89,22 @@ export class StudentDetailComponent implements OnInit{
 
   onDelete(idCourse:string):void{
     this.inscriptionsService.removeInscriptionByStudentCourse(this.student?.id,idCourse);
-    this.loadStudentInscriptions(this.student?.id);
+    this.loadStudentInscriptions();
   }
   onSave():void{
-    
-    let newInscrip:IInscription={   id: generateRandomString(4),
-      course:this.courseToApply!,
-      student:this.student!,
-      /** TODO: cambiar por objeto de usuario logueado */
-      user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), rol:'ADMIN', password:'123456'},
-      createdAt: new Date()
-    }
+     if (!!this.courseToApply){
+      // TODO: permite agregar repetidos
+      let newInscrip:IInscription={   id: generateRandomString(4),
+        course:this.courseToApply!,
+        student:this.student!,
+        /** TODO: cambiar por objeto de usuario logueado */
+        user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), rol:'ADMIN', password:'123456'},
+        createdAt: new Date()
+      }
 
-    this.inscriptionsService.insertInscription(newInscrip);
-    this.loadStudentInscriptions(this.student?.id);
+      this.inscriptionsService.insertInscription(newInscrip);
+      this.loadStudentInscriptions();
+    }
   }
 
 }
