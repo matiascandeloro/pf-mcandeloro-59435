@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../../../../core/services/users.service';
-import { User } from '../../../../model/interfaces';
+import { IUser } from '../../../../model/interfaces';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,7 +11,7 @@ import { User } from '../../../../model/interfaces';
 export class UserDetailComponent implements OnInit{
   idUsuario?: string;
 
-  user?:User;
+  user?:IUser;
   isLoading=false;
   constructor(private activatedRoute:ActivatedRoute, private usersService:UsersService){
     

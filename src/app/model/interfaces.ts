@@ -19,7 +19,7 @@ export interface IInscription{
     id: string;
     course:ICourse;
     student:IStudent;
-    user:User;
+    user:IUser;
     createdAt: Date;
 }
 
@@ -31,7 +31,7 @@ export interface IClass{
     createdAt: Date;
 }
 
-export interface User{
+export interface IUser{
     id:string;
     firstName: string;
     lastName: string;

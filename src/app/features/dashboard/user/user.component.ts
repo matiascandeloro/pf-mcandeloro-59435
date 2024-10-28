@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
-import { IStudent, User } from '../../../model/interfaces';
+import { IStudent, IUser } from '../../../model/interfaces';
 import { UsersService } from '../../../core/services/users.service';
 import { AlertService } from '../../../core/services/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email','rol','createdAt','actions'];
-  dataSource: User[]=[];
+  dataSource: IUser[]=[];
   isLoading=false;
   constructor(
     private matDialog:MatDialog,
@@ -64,7 +64,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  openModal(editingUser?:User):void{
+  openModal(editingUser?:IUser):void{
     this.matDialog.open(UserDialogComponent,{
       data:{
         editingUser
@@ -86,7 +86,7 @@ export class UserComponent implements OnInit {
       });
   }
 
-  handleUpdate(id: string, update:User):void{
+  handleUpdate(id: string, update:IUser):void{
     this.isLoading=true;
     this.usersService.updateUserById(id,update).subscribe({
       next:(users)=>{
@@ -102,7 +102,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  handleInsert(insert:User):void{
+  handleInsert(insert:IUser):void{
     this.isLoading=true;
     this.usersService.insertUser(insert).subscribe({
       next:(users)=>{
