@@ -33,10 +33,10 @@ export class InscriptionDialogComponent implements OnInit{
       course:[null,[Validators.required]],
       student:[null,[Validators.required]],
     });
+    this.loadStudentsAndCourses();
     this.patchFormValue();
   }
   ngOnInit(): void {
-    this.loadStudentsAndCourses();
   }
 
   loadStudentsAndCourses():void{
@@ -75,7 +75,9 @@ export class InscriptionDialogComponent implements OnInit{
 
   patchFormValue(){
     if (this.data?.editingInscription){
-      this.userForm.patchValue(this.data.editingInscription);
+      const course= this.courseList.find(c=>c.id===this.data?.editingInscription?.course.id);
+      const student= this.studentList.find(s=>s.id===this.data?.editingInscription?.student.id);
+      this.userForm.patchValue({...this.data.editingInscription,course,student});
     }
   }
 
