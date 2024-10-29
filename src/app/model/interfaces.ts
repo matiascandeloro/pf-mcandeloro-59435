@@ -39,4 +39,5 @@ export interface IUser{
     password:string;
     rol: 'ADMIN'| 'USER';
     createdAt: Date;
+    token: string;
 }
