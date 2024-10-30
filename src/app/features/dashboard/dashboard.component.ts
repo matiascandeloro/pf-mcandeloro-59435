@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { Observable } from 'rxjs';
 import { IUser } from '../../model/interfaces';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +12,9 @@ import { IUser } from '../../model/interfaces';
 export class DashboardComponent {
   showFiller = false;
   authUser$: Observable<IUser| null>;
+
+  ENVIRONMENT= environment;
+
   constructor(private authService:AuthService){
     this.authUser$= this.authService.authUser$;
   }

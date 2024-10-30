@@ -1,6 +1,8 @@
 import { Injectable, Pipe } from '@angular/core';
 import { IUser } from '../../model/interfaces';
 import { delay, map, Observable, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 let MY_USER_DB: IUser[] = [
   {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', password:'123456',createdAt: new Date(),role:'ADMIN', token:'sa5835y6y6sqe6VxARsq'},
@@ -16,9 +18,15 @@ let MY_USER_DB: IUser[] = [
 })
 export class UsersService {
 
-  constructor() { }
+  private baseURL= environment.apiBaseURL
+
+  constructor(
+    private httpClient:HttpClient
+  ) { }
   getUsers():Observable<IUser[]>{
-    return of(MY_USER_DB).pipe(delay(1000));
+    //return of(MY_USER_DB).pipe(delay(1000));
+
+    return this.httpClient.get<IUser[]>(this.baseURL+'users');
   }
 
 
