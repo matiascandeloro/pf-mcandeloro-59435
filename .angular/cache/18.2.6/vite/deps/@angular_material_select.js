@@ -22,10 +22,6 @@ import {
   OverlayModule
 } from "./chunk-4TEZVKAX.js";
 import {
-  CdkScrollableModule,
-  ViewportRuler
-} from "./chunk-Z5ST2P5J.js";
-import {
   animate,
   animateChild,
   query,
@@ -34,6 +30,10 @@ import {
   transition,
   trigger
 } from "./chunk-SK5ILKX7.js";
+import {
+  CdkScrollableModule,
+  ViewportRuler
+} from "./chunk-Z5ST2P5J.js";
 import {
   SelectionModel
 } from "./chunk-GRIK4GBB.js";
