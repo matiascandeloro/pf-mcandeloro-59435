@@ -10,26 +10,25 @@ import { generateRandomString } from '../../shared/utils';
 })
 export class UsersService {
 
-  private baseURL= environment.apiBaseURL
+  private baseURL= environment.apiBaseURL+'users';
 
   constructor(
     private httpClient:HttpClient
   ) { }
   getUsers():Observable<IUser[]>{
-    return this.httpClient.get<IUser[]>(this.baseURL+'users');
+    return this.httpClient.get<IUser[]>(this.baseURL);
   }
 
-
   updateUserById(id:string,update:Partial<IUser>){
-    return this.httpClient.patch<IUser>(this.baseURL+'users/'+id,update).pipe(concatMap(()=>this.getUsers()));
+    return this.httpClient.patch<IUser>(this.baseURL+'/'+id,update).pipe(concatMap(()=>this.getUsers()));
   }
 
   removeUserById(id: string ):Observable<IUser[]>{
-    return this.httpClient.delete<IUser>(this.baseURL+'users/'+id).pipe(concatMap(()=>this.getUsers()));
+    return this.httpClient.delete<IUser>(this.baseURL+'/'+id).pipe(concatMap(()=>this.getUsers()));
   }
 
   insertUser(user:Omit<IUser, 'id'>): Observable<IUser>{
-    return this.httpClient.post<IUser>(this.baseURL+'users',{
+    return this.httpClient.post<IUser>(this.baseURL,{
       ...user,
       token: generateRandomString(20),
       role: "USER",
@@ -39,6 +38,6 @@ export class UsersService {
   }
 
   getUserById(id:string): Observable<IUser| undefined>{
-    return this.httpClient.get<IUser>(this.baseURL+'users/'+id);
+    return this.httpClient.get<IUser>(this.baseURL+'/'+id);
   }
 }

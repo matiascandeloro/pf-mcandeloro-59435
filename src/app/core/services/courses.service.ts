@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ICourse } from '../../model/interfaces';
-import {  map, Observable, of } from 'rxjs';
+import {  concatMap, map, Observable, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 let MY_COURSE_DB: ICourse[] = [
   {id: 'VaCf', name: 'Curso 1',   description: 'Descripcion del curso 1', active:true, createdAt: new Date()},
@@ -13,32 +15,33 @@ let MY_COURSE_DB: ICourse[] = [
   providedIn: 'root'
 })
 export class CoursesService {
-
-  constructor() { }
+  private baseURL= environment.apiBaseURL +'courses';
+  constructor(
+    private httpClient:HttpClient
+  ) { }
 
   getCourses(): Observable<ICourse[]>{
-    return of(MY_COURSE_DB);
+    return this.httpClient.get<ICourse[]>(this.baseURL);
   }
 
 
   updateCourseById(id:string,update:Partial<ICourse>){
-    MY_COURSE_DB=MY_COURSE_DB.map((course)=>course.id===id? {...course,...update}:course);
-    return of(MY_COURSE_DB);
+    return this.httpClient.patch<ICourse>(this.baseURL+'/'+id,update).pipe(concatMap(()=>this.getCourses()));
   }
 
   removeCourseById(id: string ):Observable<ICourse[]>{
-    MY_COURSE_DB=MY_COURSE_DB.filter((course)=> course.id!=id);
-
-    return of(MY_COURSE_DB);
+    return this.httpClient.delete<ICourse>(this.baseURL+'/'+id).pipe(concatMap(()=>this.getCourses()));
   }
 
   insertCourse(course:ICourse){
-    MY_COURSE_DB= [...MY_COURSE_DB,{...course,}];
-    return of(MY_COURSE_DB);
+    return this.httpClient.post<ICourse>(this.baseURL,{
+      ...course,
+      active:true,
+      createdAt: new Date()
+    });
   }
 
   getCourseById(id:string): Observable<ICourse| undefined>{
-    return this.getCourses().pipe(map((course)=> course.find((c)=> c.id===id)));
-
+    return this.httpClient.get<ICourse>(this.baseURL+'/'+id);
   }
 }

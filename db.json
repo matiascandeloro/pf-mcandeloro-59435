@@ -11,13 +11,6 @@
       "createdAt": "2024-10-30T00:14:33.140Z"
     },
     {
-      "id": "Yic4",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@imas.co",
-      "createdAt": "2024-10-30T16:37:44.835Z"
-    },
-    {
       "id": "ML2w",
       "firstName": "sefr",
       "lastName": "fggr",
@@ -25,6 +18,108 @@
       "createdAt": "2024-10-30T16:39:20.659Z",
       "token": "XNJ7hWZsgVi2lib6H7Lu",
       "role": "USER"
+    }
+  ],
+  "students": [
+    {
+      "id": "c658",
+      "firstName": "Matias",
+      "lastName": "Candeloro",
+      "email": "mcandeloro@mail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "b98c",
+      "firstName": "Agustin",
+      "lastName": "Lopez",
+      "email": "alopez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "4ae5",
+      "firstName": "Nahuel",
+      "lastName": "Ortiz",
+      "email": "nortiz@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "b37c",
+      "firstName": "Sergio",
+      "lastName": "Juarez",
+      "email": "sjuarez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "3724",
+      "firstName": "Leonardo",
+      "lastName": "Hernandez",
+      "email": "lhernandez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "3c1a",
+      "firstName": "Gustavo",
+      "lastName": "Fernandez",
+      "email": "gfernandez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "7869",
+      "firstName": "Francisco",
+      "lastName": "Gutierrez",
+      "email": "fgutierrez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "dd41",
+      "firstName": "Tomas",
+      "lastName": "Arevalo",
+      "email": "tarevalo@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "0996",
+      "firstName": "Ignacio",
+      "lastName": "Conti",
+      "email": "iconti@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    },
+    {
+      "id": "03c2",
+      "firstName": "David",
+      "lastName": "Gomez",
+      "email": "dgomez@gmail.com",
+      "createdAt": "2024-10-30T15:10:00.140Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "80e5",
+      "name": "Angular",
+      "description": "Descripcion del curso de angular",
+      "active": true,
+      "createdAt": "2024-10-30T00:14:33.140Z"
+    },
+    {
+      "id": "18d7",
+      "name": "JavaScript",
+      "description": "Descripcion del curso de JavaScript",
+      "active": true,
+      "createdAt": "2024-10-30T00:14:33.140Z"
+    },
+    {
+      "id": "377a",
+      "name": "React",
+      "description": "Descripcion del curso de React",
+      "active": true,
+      "createdAt": "2024-10-30T00:14:33.140Z"
+    },
+    {
+      "id": "239c",
+      "name": "Java",
+      "description": "Descripcion del curso de Java",
+      "active": true,
+      "createdAt": "2024-10-30T00:14:33.140Z"
     }
   ]
 }

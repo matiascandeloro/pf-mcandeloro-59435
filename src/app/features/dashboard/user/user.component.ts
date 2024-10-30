@@ -90,7 +90,7 @@ export class UserComponent implements OnInit {
     this.isLoading=true;
     this.usersService.updateUserById(id,update).subscribe({
       next:(users)=>{
-        this.dataSource=users;
+        this.loadUsers();
         this.isLoading=false;
       },
       error:()=>{
@@ -106,7 +106,6 @@ export class UserComponent implements OnInit {
     this.isLoading=true;
     this.usersService.insertUser(insert).subscribe({
       next:(users)=>{
-        //this.dataSource=users;
         this.loadUsers();
         this.isLoading=false;
       },

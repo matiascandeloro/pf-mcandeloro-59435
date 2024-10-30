@@ -86,7 +86,7 @@ export class CourseComponent {
     this.isLoading=true;
     this.coursesService.updateCourseById(id,update).subscribe({
       next:(course)=>{
-        this.dataSource=course;
+        this.loadCourses();
         this.isLoading=false;
       },
       error:()=>{
@@ -102,7 +102,7 @@ export class CourseComponent {
     this.isLoading=true;
     this.coursesService.insertCourse(insert).subscribe({
       next:(course)=>{
-        this.dataSource=course;
+        this.loadCourses();
         this.isLoading=false;
       },
       error:()=>{
