@@ -1,7 +1,9 @@
 import {
-  DomSanitizer,
+  DomSanitizer
+} from "./chunk-LWA26TH3.js";
+import {
   HttpClient
-} from "./chunk-LOK774JC.js";
+} from "./chunk-A23ODQGQ.js";
 import {
   MatCommonModule
 } from "./chunk-2KSUCC4F.js";

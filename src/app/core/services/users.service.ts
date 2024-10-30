@@ -3,12 +3,12 @@ import { IUser } from '../../model/interfaces';
 import { delay, map, Observable, of } from 'rxjs';
 
 let MY_USER_DB: IUser[] = [
-  {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', password:'123456',createdAt: new Date(),rol:'ADMIN', token:'sa5835y6y6sqe6VxARsq'},
-  {id: 'Xm7s', firstName: 'Agustin',   lastName: 'Lopez',     email:'alopez@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER' , token:'saRsy6sqsqe6e6VxA23f'},
-  {id: 'ksRj', firstName: 'Nahuel',    lastName: 'Ortiz',     email:'nortiz@gmail.com',     password:'123456',createdAt: new Date(),rol:'USER' , token:'sa58VxA35Rsy6sVxA24f'},
-  {id: 'EToz', firstName: 'Gustavo',   lastName: 'Fernandez', email:'gfernandez@gmail.com', password:'123456',createdAt: new Date(),rol:'ADMIN', token:'sa5835Rsy6sqe6qe623f'},
-  {id: 'vSKX', firstName: 'Francisco', lastName: 'Gutierrez', email:'fgutierrez@gmail.com', password:'123456',createdAt: new Date(),rol:'USER' , token:'sa523f835e6VxARss2gf'},
-  {id: 'Fd8b', firstName: 'Tomas',     lastName: 'Arevalo',   email:'tarevalo@gmail.com',   password:'123456',createdAt: new Date(),rol:'USER' , token:'sa5835Rs5835y6VxAbf5'},
+  {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', password:'123456',createdAt: new Date(),role:'ADMIN', token:'sa5835y6y6sqe6VxARsq'},
+  {id: 'Xm7s', firstName: 'Agustin',   lastName: 'Lopez',     email:'alopez@gmail.com',     password:'123456',createdAt: new Date(),role:'USER' , token:'saRsy6sqsqe6e6VxA23f'},
+  {id: 'ksRj', firstName: 'Nahuel',    lastName: 'Ortiz',     email:'nortiz@gmail.com',     password:'123456',createdAt: new Date(),role:'USER' , token:'sa58VxA35Rsy6sVxA24f'},
+  {id: 'EToz', firstName: 'Gustavo',   lastName: 'Fernandez', email:'gfernandez@gmail.com', password:'123456',createdAt: new Date(),role:'ADMIN', token:'sa5835Rsy6sqe6qe623f'},
+  {id: 'vSKX', firstName: 'Francisco', lastName: 'Gutierrez', email:'fgutierrez@gmail.com', password:'123456',createdAt: new Date(),role:'USER' , token:'sa523f835e6VxARss2gf'},
+  {id: 'Fd8b', firstName: 'Tomas',     lastName: 'Arevalo',   email:'tarevalo@gmail.com',   password:'123456',createdAt: new Date(),role:'USER' , token:'sa5835Rs5835y6VxAbf5'},
 ];
 
 @Injectable({

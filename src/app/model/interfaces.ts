@@ -37,7 +37,7 @@ export interface IUser{
     lastName: string;
     email:string;
     password:string;
-    rol: 'ADMIN'| 'USER';
+    role: 'ADMIN'| 'USER';
     createdAt: Date;
     token: string;
 }

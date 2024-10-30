@@ -98,7 +98,7 @@ export class CourseDetailComponent {
         course:this.course!,
         student:this.studentToApply!,
         /** TODO: cambiar por objeto de usuario logueado */
-        user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), rol:'ADMIN', password:'123456', token:'sa5835Rs5835y6VxAbf5'},
+        user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), role:'ADMIN', password:'123456', token:'sa5835Rs5835y6VxAbf5'},
         createdAt: new Date()
       }
 

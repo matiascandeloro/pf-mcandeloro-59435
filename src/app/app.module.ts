@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SharedModule } from './shared/shared.module';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
     provideAnimationsAsync(),
     provideNativeDateAdapter(),
     {provide: MAT_DATE_LOCALE, useValue: 'es-AR'},
+    provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,14 @@
 {
-    "users":[
-        {
-            "id":"aG2a",
-            "firstName":"Matias",
-            "lastName":"Candeloro"
-        }
-    ]
+  "users": [
+    {
+      "id": "4aff",
+      "firstName": "Matias",
+      "lastName": "Candeloro",
+      "email": "admin@mail.com",
+      "password": 123456,
+      "role": "ADMIN",
+      "token": "aDs24dHAekSDfi5i",
+      "createdAt": "2024-10-30T00:14:33.140Z"
+    }
+  ]
 }
