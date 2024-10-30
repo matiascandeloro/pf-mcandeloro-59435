@@ -9,6 +9,22 @@
       "role": "ADMIN",
       "token": "aDs24dHAekSDfi5i",
       "createdAt": "2024-10-30T00:14:33.140Z"
+    },
+    {
+      "id": "Yic4",
+      "firstName": "asd",
+      "lastName": "asd",
+      "email": "asd@imas.co",
+      "createdAt": "2024-10-30T16:37:44.835Z"
+    },
+    {
+      "id": "ML2w",
+      "firstName": "sefr",
+      "lastName": "fggr",
+      "email": "qwe@fem.coa",
+      "createdAt": "2024-10-30T16:39:20.659Z",
+      "token": "XNJ7hWZsgVi2lib6H7Lu",
+      "role": "USER"
     }
   ]
 }
