@@ -95,10 +95,10 @@ export class CourseDetailComponent {
      if (!!this.studentToApply){
       // TODO: permite agregar repetidos
       let newInscrip:IInscription={   id: generateRandomString(4),
-        course:this.course!,
-        student:this.studentToApply!,
+        courseId:this.course!.id,
+        studentId:this.studentToApply!.id,
         /** TODO: cambiar por objeto de usuario logueado */
-        user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), role:'ADMIN', password:'123456', token:'sa5835Rs5835y6VxAbf5'},
+        userId:'CpET',
         createdAt: new Date()
       }
 

@@ -1,8 +1,26 @@
 <mat-nav-list>
-    <a routerLink="home" routerLinkActive #homeLink="routerLinkActive" [activated]="homeLink.isActive" mat-list-item>Inicio</a>
-    <a routerLink="students" routerLinkActive #studentLink="routerLinkActive" [activated]="studentLink.isActive" mat-list-item>Alumnos</a>
-    <a routerLink="courses" routerLinkActive #courseLink="routerLinkActive" [activated]="courseLink.isActive" mat-list-item mat-list-item>Cursos</a>
-    <a routerLink="inscriptions" routerLinkActive #inscriptionLink="routerLinkActive" [activated]="inscriptionLink.isActive" mat-list-item >Inscripciones</a>
-    <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>Usuarios</a>
-    <a (click)="logout()"  mat-list-item>Cerrar Session</a>
+    <a routerLink="home" routerLinkActive #homeLink="routerLinkActive" [activated]="homeLink.isActive" mat-list-item>
+      <mat-icon>home</mat-icon> 
+      Inicio
+    </a>
+    <a routerLink="students" routerLinkActive #studentLink="routerLinkActive" [activated]="studentLink.isActive" mat-list-item>
+      <mat-icon>supervisor_account</mat-icon> 
+      Alumnos
+    </a>
+    <a routerLink="courses" routerLinkActive #courseLink="routerLinkActive" [activated]="courseLink.isActive" mat-list-item mat-list-item>
+      <mat-icon>library_books</mat-icon> 
+      Cursos
+    </a>
+    <a routerLink="inscriptions" routerLinkActive #inscriptionLink="routerLinkActive" [activated]="inscriptionLink.isActive" mat-list-item >
+      <mat-icon>assignment_ind</mat-icon> 
+      Inscripciones
+    </a>
+    <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>
+      <mat-icon>person</mat-icon>
+      Usuarios
+    </a>
+    <a (click)="logout()"  mat-list-item>
+      <mat-icon>power_off</mat-icon>
+      Cerrar Session
+    </a>
   </mat-nav-list>

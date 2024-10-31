@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { generateRandomString } from '../../../../shared/utils';
 import { StudentsService } from '../../../../core/services/students.service';
 import { CoursesService } from '../../../../core/services/courses.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 interface CourseDialogData{
   editingInscription?: IInscription;
@@ -21,17 +22,20 @@ export class InscriptionDialogComponent implements OnInit{
   isLoadingStudent=false;
   courseList: ICourse[]=[];
   studentList: IStudent[]=[];
+  selectedCourse:ICourse|undefined;
 
   constructor(
     private matDialogRef:MatDialogRef<InscriptionDialogComponent>,
     private formBuilder: FormBuilder,
     private courseService: CoursesService,
     private studentService:StudentsService,
+    private authService:AuthService,
     @Inject(MAT_DIALOG_DATA) public data?: CourseDialogData,
   ){
     this.userForm=this.formBuilder.group({
-      course:[null,[Validators.required]],
-      student:[null,[Validators.required]],
+      courseId:[null,[Validators.required]],
+      studentId:[null,[Validators.required]],
+      userId:[],
     });
     this.loadStudentsAndCourses();
     this.patchFormValue();
@@ -75,14 +79,25 @@ export class InscriptionDialogComponent implements OnInit{
 
   patchFormValue(){
     if (this.data?.editingInscription){
-      const course= this.courseList.find(c=>c.id===this.data?.editingInscription?.course.id);
-      const student= this.studentList.find(s=>s.id===this.data?.editingInscription?.student.id);
-      this.userForm.patchValue({...this.data.editingInscription,course,student});
+      //console.log(this.data?.editingInscription?.course.id);
+      //console.log(this.courseList);
+      
+      this.courseService.getCourseById(this.data?.editingInscription?.courseId).subscribe({
+        next:(course)=>{this.selectedCourse=course}
+      });
+      //this.courseList.find(c=>c.id===this.data?.editingInscription?.course.id);
+      
+      const courseFound=this.selectedCourse;
+      //console.log(courseFound);
+      const student= this.studentList.find(s=>s.id===this.data?.editingInscription?.studentId);
+      //console.log(student);
+      this.userForm.patchValue({...this.data.editingInscription, courseFound,student});
     }
   }
 
   onSave():void{
-    console.log(this.userForm);
+    console.log('userid');
+    console.log(this.authService.user.id);
     if (this.userForm.invalid){
       this.userForm.markAllAsTouched();
     }else{
@@ -91,7 +106,7 @@ export class InscriptionDialogComponent implements OnInit{
           id: this.isEditing ? this.data!.editingInscription!.id : generateRandomString(4),
           createdAt: this.isEditing ? this.data!.editingInscription!.createdAt : new Date(),
           /**  cambiar luego por el usuario logueado */
-          user: this.isEditing ? this.data!.editingInscription!.user: {id: 'VaCp', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', password:'123456',createdAt: new Date(),rol:'ADMIN'},
+          userId: this.isEditing ? this.data!.editingInscription!.userId:this.authService.user.id,
       });
     }
   }

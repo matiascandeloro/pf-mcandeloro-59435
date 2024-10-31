@@ -9,7 +9,8 @@
     </div>
     <!--<span class="example-spacer"></span>-->
     <div *ngIf="authUser$ |async; let authUser">
-      <p>{{authUser.firstName}} {{authUser.lastName}}</p>
+      
+      <p><mat-icon subffix>person_outline</mat-icon>{{authUser.firstName}} {{authUser.lastName}}</p>
     </div>
   </div>
 </mat-toolbar>

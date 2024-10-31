@@ -95,10 +95,10 @@ export class StudentDetailComponent implements OnInit{
      if (!!this.courseToApply){
       // TODO: permite agregar repetidos
       let newInscrip:IInscription={   id: generateRandomString(4),
-        course:this.courseToApply!,
-        student:this.student!,
+        courseId:this.courseToApply!.id,
+        studentId:this.student!.id,
         /** TODO: cambiar por objeto de usuario logueado */
-        user:{id: 'CpET', firstName: 'Matias',    lastName: 'Candeloro', email:'mcandeloro@gmail.com', createdAt: new Date(), role:'ADMIN', password:'123456', token:'sa5835Rs5835y6VxAbf5'},
+        userId: 'CpET',
         createdAt: new Date()
       }
 

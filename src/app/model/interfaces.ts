@@ -17,9 +17,9 @@ export interface ICourse {
 
 export interface IInscription{
     id: string;
-    course:ICourse;
-    student:IStudent;
-    user:IUser;
+    courseId:string;
+    studentId:string;
+    userId:string;
     createdAt: Date;
 }
 

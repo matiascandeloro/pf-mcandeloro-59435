@@ -7,7 +7,11 @@ import { IUser } from '../../model/interfaces';
 export class UserFullNamePipe implements PipeTransform {
 
   transform(value: IUser, ...args: unknown[]): string {
-    return value.firstName + ' '+ value.lastName;
+    if (!!value){
+      return value.firstName + ' '+ value.lastName;
+    }else{
+      return '';
+    }
   }
 
 }

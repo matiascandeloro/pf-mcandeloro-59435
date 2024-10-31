@@ -12,8 +12,8 @@
     },
     {
       "id": "ML2w",
-      "firstName": "sefr",
-      "lastName": "fggr",
+      "firstName": "david L",
+      "lastName": "lonjack",
       "email": "qwe@fem.coa",
       "createdAt": "2024-10-30T16:39:20.659Z",
       "token": "XNJ7hWZsgVi2lib6H7Lu",
@@ -30,7 +30,7 @@
     },
     {
       "id": "b98c",
-      "firstName": "Agustin",
+      "firstName": "Agustin edit",
       "lastName": "Lopez",
       "email": "alopez@gmail.com",
       "createdAt": "2024-10-30T15:10:00.140Z"
@@ -85,11 +85,11 @@
       "createdAt": "2024-10-30T15:10:00.140Z"
     },
     {
-      "id": "03c2",
+      "id": "LpQ9",
       "firstName": "David",
       "lastName": "Gomez",
       "email": "dgomez@gmail.com",
-      "createdAt": "2024-10-30T15:10:00.140Z"
+      "createdAt": "2024-10-31T15:39:31.224Z"
     }
   ],
   "courses": [
@@ -116,10 +116,33 @@
     },
     {
       "id": "239c",
-      "name": "Java",
+      "name": "Java ",
       "description": "Descripcion del curso de Java",
       "active": true,
       "createdAt": "2024-10-30T00:14:33.140Z"
+    },
+    {
+      "id": "KbNL",
+      "name": "C# (Sharp)",
+      "description": "Descripcion de C#",
+      "active": true,
+      "createdAt": "2024-10-31T13:11:34.140Z"
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": "c8ef",
+      "studentId": "c658",
+      "courseId": "80e5",
+      "userId": "4aff",
+      "createdAt": "2024-10-31T15:40:11.039Z"
+    },
+    {
+      "id": "7a7b",
+      "studentId": "b37c",
+      "courseId": "377a",
+      "userId": "4aff",
+      "createdAt": "2024-10-31T17:27:58.114Z"
     }
   ]
 }

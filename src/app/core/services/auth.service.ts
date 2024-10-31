@@ -11,6 +11,7 @@ export class AuthService{
 
     private _authUser$=new BehaviorSubject<null|IUser>(null);
     public authUser$=this._authUser$.asObservable();
+    public user!: IUser;
 
     private baseURL= environment.apiBaseURL
     
@@ -22,6 +23,9 @@ export class AuthService{
     private handleAuthentication(users:IUser[]):IUser | null {
         if (!!users[0]){
             this._authUser$.next(users[0]);
+            this.user=users[0];
+            this.user.password='';
+            this.user.token='';
             localStorage.setItem('token',users[0].token);
             return users[0];
         }else{

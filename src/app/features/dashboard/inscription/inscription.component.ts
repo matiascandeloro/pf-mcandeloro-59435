@@ -5,7 +5,6 @@ import { InscriptionsService } from '../../../core/services/inscriptions.service
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../../core/services/alert.service';
 import { InscriptionDialogComponent } from './inscription-dialog/inscription-dialog.component';
-import { CourseComponent } from '../course/course.component';
 
 @Component({
   selector: 'app-inscription',
@@ -30,7 +29,7 @@ export class InscriptionComponent {
 
   loadInscriptions():void{
     this.isLoading=true;
-     this.inscriptionService.getInscription().subscribe({
+     this.inscriptionService.getInscriptions().subscribe({
       next:(inscription)=>{
         this.dataSource=inscription;
         this.isLoading=false;
@@ -49,7 +48,7 @@ export class InscriptionComponent {
       this.isLoading=true;
        this.inscriptionService.removeInscriptionById(id).subscribe({
         next: (inscription)=>{
-          this.dataSource=inscription;
+          this.loadInscriptions();
           this.isLoading=false;
         },
         error:()=>{
@@ -89,7 +88,7 @@ export class InscriptionComponent {
     this.isLoading=true;
     this.inscriptionService.updateInscriptionById(id,update).subscribe({
       next:(inscription)=>{
-        this.dataSource=inscription;
+        this.loadInscriptions();
         this.isLoading=false;
       },
       error:()=>{
@@ -103,9 +102,12 @@ export class InscriptionComponent {
 
   handleInsert(insert:IInscription):void{
     this.isLoading=true;
+    console.log('insert' );
+      console.log(insert);
     this.inscriptionService.insertInscription(insert).subscribe({
       next:(inscription)=>{
-        this.dataSource=inscription;
+        //this.dataSource=inscription;
+        this.loadInscriptions();
         this.isLoading=false;
       },
       error:()=>{
@@ -121,8 +123,5 @@ export class InscriptionComponent {
   goToDetail(id:string):void{
     this.router.navigate([id,'detail'],{relativeTo: this.activatedRoute})
   }
-}
-function deserialize(json: any, student: any): any {
-  throw new Error('Function not implemented.');
 }
 
