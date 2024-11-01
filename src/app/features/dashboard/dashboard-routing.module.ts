@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CourseModule } from './course/course.module';
 import { InscriptionModule } from './inscription/inscription.module';
 import { StudentModule } from './student/student.module';
+import { authAdminGuard } from '../../core/guard/auth-admin.guard';
 
 const routes: Routes = [
  
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   {
     path:'users',
+    canActivate:[authAdminGuard],
     loadChildren: ()=> import('./user/user.module').then((m)=>m.UserModule),
   },
   {

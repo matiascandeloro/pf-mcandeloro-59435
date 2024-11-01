@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { IInscription, IStudent } from '../../model/interfaces';
+import { Injectable, Pipe } from '@angular/core';
+import { ICourse, IInscription, IStudent, IUser } from '../../model/interfaces';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { map } from 'rxjs/internal/operators/map';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { concatMap } from 'rxjs/internal/operators/concatMap';
+import { waitForAsync } from '@angular/core/testing';
 
 
 @Injectable({
@@ -15,6 +16,10 @@ export class InscriptionsService {
 
   private baseURL= environment.apiBaseURL +'inscriptions';
   db_inscription_filter: IInscription[] =[];
+
+  inscripIdToDel:string='';
+
+
   constructor(
     private httpClient:HttpClient
   ) { }
@@ -32,7 +37,7 @@ export class InscriptionsService {
   }
 
   insertInscription(inscription:IInscription){
-    console.log(inscription);
+  
     return this.httpClient.post<IInscription>(this.baseURL,{
       studentId:inscription.studentId,
       courseId:inscription.courseId,
@@ -41,28 +46,50 @@ export class InscriptionsService {
     });
   }
 
-  removeInscriptionByStudentCourse(idStudent?: string, idCourse?: string ):Observable<IInscription[]>{
-    // console.log(MY_INSCRIPTION_DB, idStudent, idCourse);
-    // MY_INSCRIPTION_DB=MY_INSCRIPTION_DB.filter((inscription)=> inscription.courseId!=idCourse || inscription.studentId!=idStudent);
-    // console.log(MY_INSCRIPTION_DB);
-    // return of(MY_INSCRIPTION_DB);
-    return of();
+  insertInscriptionbyStudentCourse(studentid:string, courseid:string, userid:string){
+    return this.httpClient.post<IInscription>(this.baseURL,{
+      studentId:studentid,
+      courseId:courseid,
+      userId:userid,
+      createdAt: new Date()
+    });
+    
   }
 
   getInscriptionById(id:string): Observable<IInscription| undefined>{
     return this.httpClient.get<IInscription>(this.baseURL+'/'+id);
 
   }
-  getInscriptionByStudent(idStudent?:string ): Observable<IInscription[]>{
-    // this.db_inscription_filter=MY_INSCRIPTION_DB.filter((inscription)=> inscription.studentId===idStudent);
-    // return of(this.db_inscription_filter);
-    // //return this.httpClient.get<IInscription>(this.baseURL+'/'+id);
-    return of();
+
+  // removeInscriptionByStudentCourse(idStudent?: string, idCourse?: string ):Observable<IInscription[]>{
+  //   this.httpClient.get<IInscription[]>(this.baseURL+'?studentId='+idStudent+'&courseId='+idCourse).subscribe({
+  //     next:(inscription)=>{
+  //       this.inscripIdToDel=inscription[0].id;
+  //       //return this.httpClient.delete<IInscription>(this.baseURL+'/'+inscription[0].id).pipe(concatMap(()=>this.getInscriptions()));
+  //       //return this.removeInscriptionById(inscription[0].id);
+  //     }
+  //   });
+  //   return of()
+  // }
+
+  getInscriptionByStudentCourse(idStudent?: string, idCourse?: string ):string{
+    this.httpClient.get<IInscription[]>(this.baseURL+'?studentId='+idStudent+'&courseId='+idCourse).subscribe({
+      next:(inscription)=>{
+        this.inscripIdToDel=inscription[0].id;
+        //return this.httpClient.delete<IInscription>(this.baseURL+'/'+inscription[0].id).pipe(concatMap(()=>this.getInscriptions()));
+        //return this.removeInscriptionById(inscription[0].id);
+      }
+    });
+    console.log(this.inscripIdToDel)
+    return this.inscripIdToDel
   }
+
+  getInscriptionByStudent(idStudent?:string ): Observable<IInscription[]>{
+    return this.httpClient.get<IInscription[]>(this.baseURL+'/?_embed=student&_embed=course&_embed=user&studentId='+idStudent);
+  }
+
   getInscriptionByCourse(idCourse?:string): Observable<IInscription[]>{
-    // this.db_inscription_filter=MY_INSCRIPTION_DB.filter((inscription)=> inscription.courseId===idCourse);
-    // return of(this.db_inscription_filter);
-    return of();
+    return this.httpClient.get<IInscription[]>(this.baseURL+'/?_embed=student&_embed=course&_embed=user&courseId='+idCourse);
   }
 
 

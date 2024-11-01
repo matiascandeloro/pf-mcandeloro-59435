@@ -15,10 +15,13 @@
       <mat-icon>assignment_ind</mat-icon> 
       Inscripciones
     </a>
-    <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>
+    @if ( isAdmin ){
+       <a routerLink="users" routerLinkActive #userLink="routerLinkActive" [activated]="userLink.isActive" mat-list-item>
       <mat-icon>person</mat-icon>
       Usuarios
     </a>
+    }
+   
     <a (click)="logout()"  mat-list-item>
       <mat-icon>power_off</mat-icon>
       Cerrar Session

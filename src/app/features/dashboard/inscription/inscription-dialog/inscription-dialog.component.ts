@@ -79,18 +79,11 @@ export class InscriptionDialogComponent implements OnInit{
 
   patchFormValue(){
     if (this.data?.editingInscription){
-      //console.log(this.data?.editingInscription?.course.id);
-      //console.log(this.courseList);
-      
       this.courseService.getCourseById(this.data?.editingInscription?.courseId).subscribe({
         next:(course)=>{this.selectedCourse=course}
       });
-      //this.courseList.find(c=>c.id===this.data?.editingInscription?.course.id);
-      
       const courseFound=this.selectedCourse;
-      //console.log(courseFound);
       const student= this.studentList.find(s=>s.id===this.data?.editingInscription?.studentId);
-      //console.log(student);
       this.userForm.patchValue({...this.data.editingInscription, courseFound,student});
     }
   }
@@ -105,7 +98,6 @@ export class InscriptionDialogComponent implements OnInit{
           ...this.userForm.value,
           id: this.isEditing ? this.data!.editingInscription!.id : generateRandomString(4),
           createdAt: this.isEditing ? this.data!.editingInscription!.createdAt : new Date(),
-          /**  cambiar luego por el usuario logueado */
           userId: this.isEditing ? this.data!.editingInscription!.userId:this.authService.user.id,
       });
     }

@@ -23,10 +23,11 @@ export class AuthService{
     private handleAuthentication(users:IUser[]):IUser | null {
         if (!!users[0]){
             this._authUser$.next(users[0]);
+            localStorage.setItem('token',users[0].token);
             this.user=users[0];
             this.user.password='';
             this.user.token='';
-            localStorage.setItem('token',users[0].token);
+            
             return users[0];
         }else{
             return null;
@@ -38,6 +39,7 @@ export class AuthService{
         .pipe(map((users)=>{
          const user=this.handleAuthentication(users);
          if (user){
+            console.log(user);
             return user;
          }else{
             throw throwError(()=>{
@@ -49,6 +51,7 @@ export class AuthService{
     }
 
     logout(){
+        
         this._authUser$.next(null);
         localStorage.removeItem('token');
         this.router.navigate(['auth'])
@@ -62,6 +65,9 @@ export class AuthService{
         }));
     }
 
+    isAdmin(){
+        return this._authUser$.value?.role==="ADMIN";
+    }
 }
 
 

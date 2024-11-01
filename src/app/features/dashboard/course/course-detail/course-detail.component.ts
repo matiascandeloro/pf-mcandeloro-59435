@@ -6,6 +6,7 @@ import { StudentsService } from '../../../../core/services/students.service';
 import { IStudent, ICourse, IInscription } from '../../../../model/interfaces';
 import { generateRandomString } from '../../../../shared/utils';
 import { StudentComponent } from '../../student/student.component';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -30,6 +31,7 @@ export class CourseDetailComponent {
     private studentsService:StudentsService,
     private coursesService:CoursesService,
     private inscriptionsService: InscriptionsService,
+    private authService:AuthService,
   ){
     
   }
@@ -73,7 +75,7 @@ export class CourseDetailComponent {
 
   loadCoursesInscriptions(){
     this.isLoadingInscriptions=true;
-    this.inscriptionsService.getInscriptionByCourse(this.course?.id).subscribe({
+    this.inscriptionsService.getInscriptionByCourse(this.activatedRoute.snapshot.params['id']).subscribe({
       next:(inscriptions)=>{
         this.dataSource=inscriptions;
         this.isLoadingInscriptions=false;
@@ -87,23 +89,31 @@ export class CourseDetailComponent {
     })
   }
 
-  onDelete(idStudent:string):void{
-    this.inscriptionsService.removeInscriptionByStudentCourse(idStudent,this.course?.id);
-    this.loadCoursesInscriptions();
+  onDelete(idInscription:string):void{
+    this.inscriptionsService.removeInscriptionById(idInscription).subscribe({
+       next:()=>{
+          this.loadCoursesInscriptions();
+      }
+    });
   }
+  
   onSave():void{
      if (!!this.studentToApply){
       // TODO: permite agregar repetidos
-      let newInscrip:IInscription={   id: generateRandomString(4),
+      let newInscrip:IInscription={   id: '',
         courseId:this.course!.id,
         studentId:this.studentToApply!.id,
         /** TODO: cambiar por objeto de usuario logueado */
-        userId:'CpET',
+        userId:this.authService.user.id,
         createdAt: new Date()
       }
 
-      this.inscriptionsService.insertInscription(newInscrip);
-      this.loadCoursesInscriptions();
+      this.inscriptionsService.insertInscription(newInscrip).subscribe({
+        next:()=>{
+          this.loadCoursesInscriptions();
+          this.studentToApply=undefined;
+        }
+      });
     }
   }
 
